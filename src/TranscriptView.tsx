@@ -1,11 +1,13 @@
 import { ScoreItem } from './type';
-import { ScoreItemViewWithObserver } from './ScoreItemView';
 
-export const Transcript = ({ value }: { value: ScoreItem[] }) => {
+export const Transcript = ({ value, itemView }: { value: ScoreItem[], itemView: React.FC<{
+  value: ScoreItem
+}>}) => {
+  const ItemView = itemView;
   return (
     <div>
       {value.map((item) => {
-        return <ScoreItemViewWithObserver key={item.name} value={item} />;
+        return <ItemView key={item.name} value={item} />;
       })}
     </div>
   );
